@@ -1,0 +1,127 @@
+/* --- Basic Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+}
+
+/* --- Desktop Navbar Styling --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* Styling the desktop links using flexbox */
+.desktop-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.desktop-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.desktop-links a:hover {
+    color: #0056b3;
+}
+
+/* Hide the mobile nav container by default on large screens */
+.mobile-nav-container {
+    display: none;
+}
+
+
+/* --- Mobile View Media Query --- */
+@media (max-width: 768px) {
+    
+    /* 1. Hide the desktop links when on mobile */
+    .desktop-links {
+        display: none;
+    }
+
+    /* 2. Show the mobile nav container */
+    .mobile-nav-container {
+        display: block;
+        position: relative; /* Crucial: makes the absolute mobile-menu position relative to this container */
+    }
+
+    /* 3. Style the hamburger button */
+    .hamburger-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px; /* Space between the lines */
+    }
+
+    /* Drawing the 3 lines of the hamburger icon */
+    .bar {
+        width: 30px;
+        height: 3px;
+        background-color: #333;
+        border-radius: 2px;
+    }
+
+    /* 4. The Mobile Menu Div */
+    .mobile-menu {
+        display: none; /* Hidden by default as instructed */
+        position: absolute;
+        top: 40px; /* Pushes the menu down below the button */
+        right: 0; /* Aligns the menu to the right side of the screen */
+        background-color: #ffffff;
+        width: 200px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border-radius: 5px;
+        z-index: 1000;
+    }
+
+    .mobile-menu ul {
+        list-style: none;
+    }
+
+    .mobile-menu li {
+        border-bottom: 1px solid #eee;
+    }
+
+    .mobile-menu a {
+        display: block; /* Makes the whole row clickable, not just the text */
+        padding: 15px 20px;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .mobile-menu a:hover {
+        background-color: #f9f9f9;
+        color: #0056b3;
+    }
+
+    
+    .hamburger-btn:focus + .mobile-menu {
+        display: block;
+    }
+
+    /* Optional hack: Keeps the menu open if you hover over it so it doesn't vanish instantly when you try to click a link */
+    .mobile-menu:hover {
+        display: block;
+    }
+}
